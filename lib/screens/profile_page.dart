@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yiqilma_app/widgets/appBar.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({ Key? key }) : super(key: key);
@@ -6,7 +7,8 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("ProfilePage"),),
+          appBar:WidgetAppBar.myAppBar("Contracts"),
+
       
     );
   }

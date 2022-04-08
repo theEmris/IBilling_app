@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yiqilma_app/widgets/appBar.dart';
 
 class ContactsPage extends StatelessWidget {
   const ContactsPage({ Key? key }) : super(key: key);
@@ -6,8 +7,14 @@ class ContactsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("contacts page")),
+    appBar:WidgetAppBar.myAppBar("Contracts"),
+
+    body: Column(children: [
       
+    ],),
+
+
+
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yiqilma_app/core/components/bottomNavBar.dart';
+import 'package:yiqilma_app/core/constants/UiConstants.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -7,7 +8,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Color(0xFF000000),
+        scaffoldBackgroundColor: UiContstants.kPrimarycolor(),
         
       ),
       home: MyStatefulWidget(),

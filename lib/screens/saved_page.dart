@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yiqilma_app/widgets/appBar.dart';
 
 class SavedPage extends StatelessWidget {
   const SavedPage({ Key? key }) : super(key: key);
@@ -7,7 +8,7 @@ class SavedPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold 
     (
-      appBar: AppBar(title: Text("Saved page"),),
+     appBar:WidgetAppBar.myAppBar("Contracts"),
       
     );
   }
