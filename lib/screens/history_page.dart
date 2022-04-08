@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yiqilma_app/widgets/appBar.dart';
+import 'package:yiqilma_app/widgets/myAppBars.dart';
 
 class HistoryPage extends StatelessWidget {
   const HistoryPage({ Key? key }) : super(key: key);
@@ -7,7 +7,7 @@ class HistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-         appBar:WidgetAppBar.myAppBar("Contracts"),
+         appBar:myAppBars.myAppBar("Contracts"),
 
       
     );
