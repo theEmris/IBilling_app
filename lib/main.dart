@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yiqilma_app/core/components/bottomNavBar.dart';
+import 'package:yiqilma_app/bloc/bottomNavBar_cubit/bnavBar_view.dart';
 import 'package:yiqilma_app/core/constants/UiConstants.dart';
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: UiContstants.kPrimarycolor(),
         
       ),
-      home: MyStatefulWidget(),
+      home: BottomNavBarView(),
     );
 
 

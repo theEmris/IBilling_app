@@ -1,4 +1,3 @@
-import 'package:flutter_svg/avd.dart';
 
 abstract class BottomNavState {
   BottomNavState();
@@ -13,8 +12,7 @@ class BottomNavLoading extends BottomNavState {
 }
 
 class BottomNavComplete extends BottomNavState {
-  int index;
 
-  BottomNavComplete({required this.index});
+  BottomNavComplete();
 
 }

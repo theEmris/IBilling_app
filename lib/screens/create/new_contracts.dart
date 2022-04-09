@@ -9,6 +9,9 @@ class NewContractsPage extends StatelessWidget {
     return Scaffold(
       appBar:myAppBars.miniAppar("new Contracts"),
       
+      
+
+
     );
   }
 }
