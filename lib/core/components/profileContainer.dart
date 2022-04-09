@@ -94,8 +94,9 @@ class ProfileContainer extends StatelessWidget {
   ListTile personListTile() {
     return ListTile(
       leading: CircleAvatar(
+        backgroundColor: Colors.transparent,
         radius: getH(40),
-        child: SvgPicture.asset("assets/myvektor.svg"),
+        child:SvgPicture.asset("assets/myvektor.svg")
       ),
       title: Text(
         "${fullName}",
@@ -104,6 +105,10 @@ class ProfileContainer extends StatelessWidget {
             color: UiContstants.kPrimaryColorforTextAndButtons()),
       ),
       subtitle: Row(
+
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+
         children: [Text("${job}  ",style: keyTextsStyle(),),
         
           CircleAvatar(
