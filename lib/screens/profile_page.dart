@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yiqilma_app/core/components/profileContainer.dart';
 import 'package:yiqilma_app/widgets/myAppBars.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -7,7 +8,31 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          appBar:myAppBars.myAppBar("Contracts"),
+          appBar:myAppBars.myAppBar("Profile"),
+
+
+          body: Column(
+            children: [
+              ProfileContainer(fullName: "Otabek Abdusamatov",
+               job: "Grafic designer",
+              workplace:"IQ Education",
+               dateOfBirth: "16.09.2001",
+                phone: "+998 97 721 06 88", 
+                
+                email: "predactorhunter041@gmail.com"
+                
+                ),
+
+                
+                
+
+
+
+                
+
+
+            ],
+          ),
 
       
     );

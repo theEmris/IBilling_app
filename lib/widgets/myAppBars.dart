@@ -8,6 +8,10 @@ class myAppBars {
       backgroundColor: UiContstants.kPrimarycolor(),
       title: Row(
         children: [
+
+
+
+          
           Padding(
             padding: const EdgeInsets.only(right: 13.0, left: 8.0),
             child: CircleAvatar(

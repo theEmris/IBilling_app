@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:yiqilma_app/bloc/newPage_cubit.dart/new_page_cubit.dart';
 import 'package:yiqilma_app/screens/create/new_contracts.dart';
 import 'package:yiqilma_app/screens/create/new_invoice.dart';
 import 'package:yiqilma_app/size_config.dart';
-import 'package:yiqilma_app/widgets/myAppBars.dart';
 
 class NewPage extends StatelessWidget {
   const NewPage({Key? key}) : super(key: key);
@@ -31,8 +32,7 @@ class NewPage extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: ListTile(
                     onTap: (() {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => new_Contracts_page()));
+                      context.read<NewPageCubit>().changePage(false);
                     }),
                     leading: SvgPicture.asset("assets/Paper.svg"),
                     title: Text(
@@ -51,8 +51,7 @@ class NewPage extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: ListTile(
                     onTap: (() {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => NewInwoicePage()));
+                      context.read<NewPageCubit>().changePage(true);
                     }),
                     leading: SvgPicture.asset("assets/Vector.svg"),
                     title: Text(
@@ -70,5 +69,4 @@ class NewPage extends StatelessWidget {
   }
 }
 
-class NewContractsPage {
-}
+class NewContractsPage {}

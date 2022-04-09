@@ -22,7 +22,7 @@ class MyPopUpMenuButton extends StatelessWidget {
             showCursor: false,
             style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
-                suffixIcon: MyPopUpMenuButton(),
+                suffixIcon: myPopUpMenu(),
                 enabledBorder: myEnabledBorderDeco(),
                 border: thisborder()),
           ),
