@@ -32,7 +32,7 @@ class NewPage extends StatelessWidget {
                   child: ListTile(
                     onTap: (() {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => NewContractsPage()));
+                          builder: (context) => new_Contracts_page()));
                     }),
                     leading: SvgPicture.asset("assets/Paper.svg"),
                     title: Text(
@@ -68,4 +68,7 @@ class NewPage extends StatelessWidget {
       ),
     );
   }
+}
+
+class NewContractsPage {
 }

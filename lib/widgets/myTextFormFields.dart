@@ -13,19 +13,29 @@ class myTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Theme(
       
-      data: ThemeData.light(
-      
+      data: Theme.of(context).copyWith(
+        highlightColor:Colors.white,
+        splashColor: Colors.white,
+        hoverColor:Colors.transparent
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: TextFormField(
+          style: TextStyle(color: Colors.white),
           controller: _controller,
     
           decoration: InputDecoration(
               fillColor: Colors.white,
-              
-             
-        focusedBorder: OutlineInputBorder(
+              hoverColor: Colors.white,
+              focusColor: Colors.white,
+
+              enabledBorder: OutlineInputBorder(
+                
+              borderSide: const BorderSide(color: Colors.white, width: 2.0),
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+                
+            focusedBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.white, width: 2.0),
               borderRadius: BorderRadius.circular(10.0),
             ),

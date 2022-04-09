@@ -41,7 +41,7 @@ dependencies:
   hive_flutter: ^1.1.0
   hive_generator: ^1.1.2
   build_runner: ^2.1.8
-
+  calendar_agenda: ^0.0.2+3
 dev_dependencies:
   flutter_test:
     sdk: flutter
