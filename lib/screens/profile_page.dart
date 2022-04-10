@@ -12,7 +12,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-          appBar:myAppBars.myAppBar("Profile"),
+          appBar:myAppBars.myAppBar(context, "Profile"),
 
 
           body: Column(

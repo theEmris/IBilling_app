@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:yiqilma_app/bloc/fiter_bloc/filter_view.dart';
 import 'package:yiqilma_app/core/constants/UiConstants.dart';
+import 'package:yiqilma_app/screens/SearchPage.dart';
 
 class myAppBars {
   static miniAppar(String titleName) {
@@ -8,10 +10,6 @@ class myAppBars {
       backgroundColor: UiContstants.kPrimarycolor(),
       title: Row(
         children: [
-
-
-
-          
           Padding(
             padding: const EdgeInsets.only(right: 13.0, left: 8.0),
             child: CircleAvatar(
@@ -23,11 +21,10 @@ class myAppBars {
           Text(titleName)
         ],
       ),
-
     );
   }
 
-  static myAppBar(String titleName) {
+  static myAppBar(BuildContext context, String titleName) {
     return AppBar(
       backgroundColor: UiContstants.kPrimarycolor(),
       title: Row(
@@ -50,6 +47,8 @@ class myAppBars {
             child: SvgPicture.asset("assets/Filter.svg"),
             onTap: () {
               print("smile");
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) =>FilterView()));
             },
           ),
         ),
@@ -63,6 +62,8 @@ class myAppBars {
             child: SvgPicture.asset("assets/lupa.svg"),
             onTap: () {
               print("smile");
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => SearchPage()));
             },
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:yiqilma_app/size_config.dart';
 
 class UiContstants {
   static kPrimarycolor() {
@@ -17,5 +18,14 @@ class UiContstants {
     return Color(0xFF2A2A2D);
   }
 
-  
+  static TextStyle valuetextStyles(BuildContext context) {
+    SizeConfig().init(context);
+    return TextStyle(color: Color(0xFF999999), fontSize: getH(20));
+  }
+
+  static TextStyle keyTextsStyle(BuildContext context) {
+    SizeConfig().init(context);
+
+    return TextStyle(color: Color(0xFFE7E7E7), fontSize: getH(20));
+  }
 }

@@ -40,19 +40,19 @@ class ProfileContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
   mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          personListTile(),
+          personListTile(context),
           Row(
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 13.0),
                 child: Text(
                   "Date of birth:",
-                  style: keyTextsStyle(),
+                  style:UiContstants.keyTextsStyle(context),
                 ),
               ),
               Text(
                 "${dateOfBirth}",
-                style: valuetextStyles(),
+                style: UiContstants.valuetextStyles(context),
               )
             ],
           ),
@@ -62,12 +62,12 @@ class ProfileContainer extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal : 13.0),
                 child: Text(
                   "Phone number:",
-                  style: keyTextsStyle(),
+                  style: UiContstants.keyTextsStyle(context),
                 ),
               ),
               Text(
                 "${dateOfBirth}",
-                style: valuetextStyles(),
+                style:UiContstants.valuetextStyles(context),
               )
             ],
           ),
@@ -77,12 +77,12 @@ class ProfileContainer extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 13.0),
                 child: Text(
                   "E-mail:",
-                  style: keyTextsStyle(),
+                  style:UiContstants.keyTextsStyle(context),
                 ),
               ),
               Text(
                 "${dateOfBirth}",
-                style: valuetextStyles(),
+                style: UiContstants.valuetextStyles(context),
               )
             ],
           ),
@@ -91,7 +91,7 @@ class ProfileContainer extends StatelessWidget {
     );
   }
 
-  ListTile personListTile() {
+  ListTile personListTile(BuildContext context) {
     return ListTile(
       leading: CircleAvatar(
         backgroundColor: Colors.transparent,
@@ -109,7 +109,7 @@ class ProfileContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
 
-        children: [Text("${job}  ",style: keyTextsStyle(),),
+        children: [Text("${job}  ",style:UiContstants.keyTextsStyle(context),),
         
           CircleAvatar(
             radius: getH(5),
@@ -118,7 +118,7 @@ class ProfileContainer extends StatelessWidget {
           Text("  "),
 
 
-          Text("${      workplace }",style: keyTextsStyle(),)
+          Text("${      workplace }",style:UiContstants.keyTextsStyle(context),)
 
 
         
@@ -127,10 +127,5 @@ class ProfileContainer extends StatelessWidget {
     );
   }
 
-  TextStyle valuetextStyles() {
-    return TextStyle(color: Color(0xFF999999), fontSize: getH(20));
-  }
-
-  TextStyle keyTextsStyle() =>
-      TextStyle(color: Color(0xFFE7E7E7), fontSize: getH(20));
+  
 }

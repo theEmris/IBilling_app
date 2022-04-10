@@ -27,12 +27,3 @@ double getW(double inputWidth) {
   return (inputWidth / 375) * screenWidth;
 }
 
-class MySizedConfig {
-  static  double getHight(BuildContext context, double inputwidth) {
-    return (inputwidth / 896) * MediaQuery.of(context).size.height;
-  }
-
-  static double getWidth(BuildContext context, double inputwidth) {
-    return (inputwidth / 896) * MediaQuery.of(context).size.width;
-  }
-}
