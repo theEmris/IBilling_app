@@ -6,8 +6,6 @@ class FilterInitial extends FilterState {
   FilterInitial();
 }
 
-class FilterComplete {
-
-
-  
+class FilterComplete extends FilterState{
+  FilterComplete();
 }

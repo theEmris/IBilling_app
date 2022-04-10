@@ -47,8 +47,8 @@ class myAppBars {
             child: SvgPicture.asset("assets/Filter.svg"),
             onTap: () {
               print("smile");
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (_) =>FilterView()));
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => FilterView()));
             },
           ),
         ),
