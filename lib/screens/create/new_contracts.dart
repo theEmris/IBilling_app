@@ -1,5 +1,8 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:yiqilma_app/core/constants/UiConstants.dart';
+import 'package:yiqilma_app/size_config.dart';
 import 'package:yiqilma_app/widgets/myAppBars.dart';
 import 'package:yiqilma_app/widgets/statusChanger.dart';
 import 'package:yiqilma_app/widgets/myTextFormFields.dart';
@@ -35,10 +38,30 @@ class new_Contracts_page  extends StatelessWidget {
       
             Text("Status of the contract",style: TextStyle(color: UiContstants.kTextColor())),
              
-            MyPopUpMenuButton()          
+            MyPopUpMenuButton() ,         
             
             
+            InkWell(
+                onTap: () {
+                  
+
+                  
+
+
+                },
+
+              child: Container(
+                height: getH(44),
+                width: getW(343),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  color: UiContstants.kPrimaryColorforTextAndButtons()
             
+                ),
+                child: Text("Save contract",style: UiContstants.keyTextsStyle(context),)
+            
+              ),
+            )
             
             ],
       
