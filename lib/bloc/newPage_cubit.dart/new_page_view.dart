@@ -23,8 +23,8 @@ class new_page_view extends StatelessWidget {
                   );
                 } else if (state is NewPageComplete) {
                   return context.watch<NewPageCubit>().currentPage == true
-                      ? new_Contracts_page()
-                      : NewInwoicePage();
+                      ? NewInwoicePage()
+                      : new_Contracts_page();
                 } else {
                   return Center(
                       child: Text(
