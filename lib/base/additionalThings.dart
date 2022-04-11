@@ -32,15 +32,20 @@ class HechIlojiBulmasa extends StatelessWidget {
                 ),
               );
             } else {
-              return CardOfHomePage(
-                fullName: "Yoldoshiva Ziyoda ",
-                amount: "1,200,000",
-                lastinvo: "156",
-                status: "Paid",
-                numinvo: "154",
-                time:
-                    "${DateTime.now().day}.${DateTime.now().month}.${DateTime.now().year}",
-                number: "6",
+              return Dismissible(
+
+                key:Key(
+                  "${ CardOfHomePage(
+                  fullName: "Yoldoshiva Ziyoda ",
+                  amount: "1,200,000",
+                  lastinvo: "156",
+                  status: "Paid",
+                  numinvo: "154",
+                  time:
+                      "${DateTime.now().day}.${DateTime.now().month}.${DateTime.now().year}",
+                  number: "6",
+                )}"
+                ),
               );
             }
           },

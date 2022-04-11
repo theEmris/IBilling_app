@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:yiqilma_app/bloc/fiter_bloc/filter_cubit.dart';
-import 'package:yiqilma_app/bloc/fiter_bloc/filter_state.dart';
+import 'package:yiqilma_app/bloc/fiter_cubit/filter_cubit.dart';
+import 'package:yiqilma_app/bloc/fiter_cubit/filter_state.dart';
 import 'package:yiqilma_app/core/components/cardOfHomePage.dart';
 import 'package:yiqilma_app/core/constants/UiConstants.dart';
 import 'package:yiqilma_app/size_config.dart';

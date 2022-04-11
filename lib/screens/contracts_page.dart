@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:yiqilma_app/bloc/bottomNavBar_cubit/bnavBar_cubit.dart';
-import 'package:yiqilma_app/bloc/fiter_bloc/filter_cubit.dart';
+import 'package:yiqilma_app/bloc/fiter_cubit/filter_cubit.dart';
 import 'package:yiqilma_app/core/components/cardOfHomePage.dart';
 import 'package:yiqilma_app/core/constants/UiConstants.dart';
 import 'package:yiqilma_app/hive/contractsBox.dart';
