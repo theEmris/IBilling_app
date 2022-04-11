@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:yiqilma_app/bloc/newPage_cubit.dart/new_page_cubit.dart';
-import 'package:yiqilma_app/screens/create/new_contracts.dart';
-import 'package:yiqilma_app/screens/create/new_invoice.dart';
 import 'package:yiqilma_app/size_config.dart';
 
 class NewPage extends StatelessWidget {

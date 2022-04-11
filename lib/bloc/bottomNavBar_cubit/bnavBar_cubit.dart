@@ -9,4 +9,11 @@ class BottomNavCubit extends Cubit<BottomNavState> {
     initial = index;
     emit(BottomNavComplete());
   }
+
+  bool isContracts = true;
+
+  changeisContracts(v) {
+    isContracts = v;
+    emit(BottomNavComplete());
+  }
 }

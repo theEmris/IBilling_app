@@ -1,14 +1,17 @@
+import 'dart:js';
+
 import 'package:calendar_agenda/calendar_agenda.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:yiqilma_app/bloc/invocont_bloc/invocont_cubit.dart';
+import 'package:yiqilma_app/bloc/bottomNavBar_cubit/bnavBar_cubit.dart';
 import 'package:yiqilma_app/core/components/cardOfHomePage.dart';
+import 'package:yiqilma_app/core/constants/UiConstants.dart';
 import 'package:yiqilma_app/hive/contractsBox.dart';
 import 'package:yiqilma_app/hive/invoiceBox.dart';
 import 'package:yiqilma_app/model/forContracts/contractsModel.dart';
 import 'package:yiqilma_app/model/forInvoice/invoiceModel.dart';
-import 'package:yiqilma_app/screens/create/new_invoice.dart';
 import 'package:yiqilma_app/widgets/myAppBars.dart';
 
 class ContractsPage extends StatelessWidget {
@@ -25,28 +28,28 @@ class ContractsPage extends StatelessWidget {
               flex: 8,
               child: ListView(
                 children: [
-                  pointerbuttons(context),
+                  changerFromcontractstoInvoice(context),
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.55,
-                    child: context.watch<InvoContCubit>().isClosed
-                        ? ValueListenableBuilder<Box<NewContractModel>>(
-                            valueListenable:
-                                ContractBoxes.getContracts().listenable(),
-                            builder: (context, box, _) {
-                              final contracts =
-                                  box.values.toList().cast<NewContractModel>();
-                              return buildContet(contracts, context);
-                            },
-                          )
-                        : ValueListenableBuilder<Box<InvoiceModel>>(
-                            valueListenable:
-                                InvoiceBoxes.getInvoices().listenable(),
-                            builder: (context, box, _) {
-                              final invoices =
-                                  box.values.toList().cast<InvoiceModel>();
-                              return buildInvoice(invoices, context);
-                            }),
-                  ),
+                      height: MediaQuery.of(context).size.height * 0.55,
+                      child: context.watch<BottomNavCubit>().isContracts
+                          ? ValueListenableBuilder<Box<NewContractModel>>(
+                              valueListenable:
+                                  ContractBoxes.getContracts().listenable(),
+                              builder: (context, box, _) {
+                                final contracts = box.values
+                                    .toList()
+                                    .cast<NewContractModel>();
+                                return buildContet(contracts);
+                              },
+                            )
+                          : ValueListenableBuilder<Box<InvoiceModel>>(
+                              valueListenable:
+                                  InvoiceBoxes.getInvoices().listenable(),
+                              builder: (context, box, _) {
+                                final invoices =
+                                    box.values.toList().cast<InvoiceModel>();
+                                return buildInvoice(invoices, context);
+                              })),
                 ],
               ))
         ],
@@ -54,35 +57,9 @@ class ContractsPage extends StatelessWidget {
     );
   }
 
-  SizedBox pointerbuttons(BuildContext context) {
+  Widget buildContet(List<NewContractModel> contracts) {
     return SizedBox(
-      height: 50,
-      child: Row(
-        children: [
-          ElevatedButton(
-            onPressed: () {
-              context.read<InvoContCubit>().changeisContracts(true);
-            },
-            child: Text(
-              "contracts",
-            ),
-          ),
-          TextButton(
-              onPressed: () {
-                context.read<InvoContCubit>().changeisContracts(false);
-              },
-              child: Text(
-                "Invoice",
-                style: TextStyle(fontSize: 16, color: Colors.white),
-              ))
-        ],
-      ),
-    );
-  }
-
-  Widget buildContet(List<NewContractModel> contracts, BuildContext context) {
-    return SizedBox(
-        height: MediaQuery.of(context).size.height * 0.4,
+        height: 200,
         child: ListView.builder(
             itemCount: contracts.length,
             itemBuilder: (context, index) {
@@ -100,19 +77,22 @@ class ContractsPage extends StatelessWidget {
   }
 
   Widget buildInvoice(List<InvoiceModel> invoices, BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.4,
-      child: ListView.builder(itemBuilder: (context, index) {
-        return CardOfHomePage(
-            fullName: invoices[index].nameofservice.toString(),
-            amount: invoices[index].summofinvoice.toString(),
-            lastinvo: index > 2 ? "${index - 1}" : index.toString(),
-            status: invoices[index].status.toString(),
-            numinvo: invoices.length.toString(),
-            time: invoices[index].createTime.toString(),
-            number: index.toString());
-      }),
-    );
+    return invoices.isEmpty == false ? SizedBox(
+      height: 200,
+      child: ListView.builder(
+        itemBuilder: (context, index) {
+          return CardOfHomePage(
+              fullName: invoices[index].nameofservice.toString(),
+              amount: invoices[index].summofinvoice.toString(),
+              lastinvo: index > 2 ? "${index - 1}" : index.toString(),
+              status: invoices[index].status.toString(),
+              numinvo: invoices.length.toString(),
+              time: "${invoices[index].createTime!.day}.${invoices[index].createTime!.month}.${invoices[index].createTime!.year}",
+              number: index.toString());
+        },
+        itemCount: invoices.length,
+      ),
+    ):Center(child:Text("Saved Invoices isn't available",style: UiContstants.keyTextsStyle(context),),);
   }
 
   Expanded kalendar() {
@@ -131,5 +111,31 @@ class ContractsPage extends StatelessWidget {
                 print(date);
               },
             )));
+  }
+
+  SizedBox changerFromcontractstoInvoice(BuildContext context) {
+    return SizedBox(
+      height: 50,
+      child: Row(
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              context.read<BottomNavCubit>().changeisContracts(true);
+            },
+            child: Text(
+              "contracts",
+            ),
+          ),
+          TextButton(
+              onPressed: () {
+                context.read<BottomNavCubit>().changeisContracts(false);
+              },
+              child: Text(
+                "Invoice",
+                style: TextStyle(fontSize: 16, color: Colors.white),
+              ))
+        ],
+      ),
+    );
   }
 }
