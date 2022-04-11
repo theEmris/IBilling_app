@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:yiqilma_app/bloc/fiter_bloc/filter_cubit.dart';
 import 'package:yiqilma_app/bloc/fiter_bloc/filter_state.dart';
+import 'package:yiqilma_app/core/components/cardOfHomePage.dart';
 import 'package:yiqilma_app/core/constants/UiConstants.dart';
 import 'package:yiqilma_app/size_config.dart';
+
+import '../../hive/contractsBox.dart';
+import '../../model/forContracts/contractsModel.dart';
 
 class FilterView extends StatelessWidget {
   const FilterView({Key? key}) : super(key: key);
@@ -20,7 +26,12 @@ class FilterView extends StatelessWidget {
             appBar: AppBar(
               backgroundColor: Colors.transparent,
             ),
-            body: Column(
+            body: Column(children: [
+
+              Expanded(
+                flex: 5,
+                
+                child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -54,12 +65,114 @@ class FilterView extends StatelessWidget {
                   ],
                 )
               ],
-            ),
+            ),),
+
+
+            Expanded(
+              
+              flex: 7,
+              child: Container(
+
+
+              height: MediaQuery.of(context).size.height * 0.7,
+                      child:  ValueListenableBuilder<Box<NewContractModel>>(
+                              valueListenable:
+                                  ContractBoxes.getContracts().listenable(),
+                              builder: (context, box, _) {
+                                final contracts = box.values
+                                    .toList()
+                                    .cast<NewContractModel>();
+                                return buildContet(contracts, context);
+                              },
+                            )
+            ))
+
+
+
+
+
+            ],)
           );
         },
       ),
     );
   }
+
+Widget buildContet(List<NewContractModel> contracts, BuildContext context) {
+    return SizedBox(
+        height: 200,
+        child: ListView.builder(
+            itemCount: contracts.length,
+            itemBuilder: (context, index) {
+              if (true) {
+                if (context.watch<FilterCubit>().statusPaid) {
+                  return CardOfHomePage(
+                    fullName: contracts[index].fullName.toString(),
+                    amount: contracts[index].inn.toString(),
+                    lastinvo: index > 2 ? "${index - 1}" : "${index}",
+                    status: contracts[index].status.toString(),
+                    numinvo: "${contracts.length}",
+                    time:
+                        "${contracts[index].createdata!.day}.${contracts[index].createdata!.month}.${contracts[index].createdata!.year}",
+                    number: "$index",
+                  );
+                } else if (context.watch<FilterCubit>().statusProgress) {
+                  return CardOfHomePage(
+                    fullName: contracts[index].fullName.toString(),
+                    amount: contracts[index].inn.toString(),
+                    lastinvo: index > 2 ? "${index - 1}" : "${index}",
+                    status: contracts[index].status.toString(),
+                    numinvo: "${contracts.length}",
+                    time:
+                        "${contracts[index].createdata!.day}.${contracts[index].createdata!.month}.${contracts[index].createdata!.year}",
+                    number: "$index",
+                  );
+                } else if (context.watch<FilterCubit>().statusIQ) {
+                  return CardOfHomePage(
+                    fullName: contracts[index].fullName.toString(),
+                    amount: contracts[index].inn.toString(),
+                    lastinvo: index > 2 ? "${index - 1}" : "${index}",
+                    status: contracts[index].status.toString(),
+                    numinvo: "${contracts.length}",
+                    time:
+                        "${contracts[index].createdata!.day}.${contracts[index].createdata!.month}.${contracts[index].createdata!.year}",
+                    number: "$index",
+                  );
+                } else if (context.watch<FilterCubit>().statusPyme) {
+                  return CardOfHomePage(
+                    fullName: contracts[index].fullName.toString(),
+                    amount: contracts[index].inn.toString(),
+                    lastinvo: index > 2 ? "${index - 1}" : "${index}",
+                    status: contracts[index].status.toString(),
+                    numinvo: "${contracts.length}",
+                    time:
+                        "${contracts[index].createdata!.day}.${contracts[index].createdata!.month}.${contracts[index].createdata!.year}",
+                    number: "$index",
+                  );
+                }
+
+                 else {
+                  return CardOfHomePage(
+                    fullName: contracts[index].fullName.toString(),
+                    amount: contracts[index].inn.toString(),
+                    lastinvo: index > 2 ? "${index - 1}" : "${index}",
+                    status: contracts[index].status.toString(),
+                    numinvo: "${contracts.length}",
+                    time:
+                        "${contracts[index].createdata!.day}.${contracts[index].createdata!.month}.${contracts[index].createdata!.year}",
+                    number: "$index",
+                  );
+                }
+              } else {
+                return Text("");
+              }
+            }));
+  }
+
+
+
+
+
 
   InkWell lastData(BuildContext context) {
     return InkWell(

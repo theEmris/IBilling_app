@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:yiqilma_app/bloc/bottomNavBar_cubit/bnavBar_cubit.dart';
+import 'package:yiqilma_app/bloc/fiter_bloc/filter_cubit.dart';
 import 'package:yiqilma_app/core/components/cardOfHomePage.dart';
 import 'package:yiqilma_app/core/constants/UiConstants.dart';
 import 'package:yiqilma_app/hive/contractsBox.dart';
@@ -60,19 +61,23 @@ class ContractsPage extends StatelessWidget {
         child: ListView.builder(
             itemCount: contracts.length,
             itemBuilder: (context, index) {
-              return context.watch<BottomNavCubit>().theday ==
-                      contracts[index].createdata!.day
-                  ? CardOfHomePage(
-                      fullName: contracts[index].fullName.toString(),
-                      amount: contracts[index].inn.toString(),
-                      lastinvo: index > 2 ? "${index - 1}" : "${index}",
-                      status: contracts[index].status.toString(),
-                      numinvo: "${contracts.length}",
-                      time:
-                          "${contracts[index].createdata!.day}.${contracts[index].createdata!.month}.${contracts[index].createdata!.year}",
-                      number: "$index",
-                    )
-                  : Text("");
+              if (context.watch<BottomNavCubit>().theday ==
+                  contracts[index].createdata!.day) {
+                
+                  return CardOfHomePage(
+                    fullName: contracts[index].fullName.toString(),
+                    amount: contracts[index].inn.toString(),
+                    lastinvo: index > 2 ? "${index - 1}" : "${index}",
+                    status: contracts[index].status.toString(),
+                    numinvo: "${contracts.length}",
+                    time:
+                        "${contracts[index].createdata!.day}.${contracts[index].createdata!.month}.${contracts[index].createdata!.year}",
+                    number: "$index",
+                  );
+                }
+               else {
+                return Text("");
+              }
             }));
   }
 
@@ -139,32 +144,31 @@ class ContractsPage extends StatelessWidget {
               context.read<BottomNavCubit>().changeisContracts(true);
             }),
             child: Chip(
-              backgroundColor: context.watch<BottomNavCubit>().isContracts == true ?
-              Colors.blueAccent:UiContstants.kPrimarycolor(),
-              label: 
-               Text(
-                "contracts",style: UiContstants.keyTextsStyle(context),
+              backgroundColor:
+                  context.watch<BottomNavCubit>().isContracts == true
+                      ? Colors.blueAccent
+                      : UiContstants.kPrimarycolor(),
+              label: Text(
+                "contracts",
+                style: UiContstants.keyTextsStyle(context),
               ),
-
             ),
           ),
-
-
-           InkWell(
+          InkWell(
             onTap: (() {
               context.read<BottomNavCubit>().changeisContracts(false);
             }),
             child: Chip(
-              backgroundColor: context.watch<BottomNavCubit>().isContracts == false ?
-              Colors.blueAccent:UiContstants.kPrimarycolor(),
-              label: 
-               Text(
-                "invoices",style: UiContstants.keyTextsStyle(context),
+              backgroundColor:
+                  context.watch<BottomNavCubit>().isContracts == false
+                      ? Colors.blueAccent
+                      : UiContstants.kPrimarycolor(),
+              label: Text(
+                "invoices",
+                style: UiContstants.keyTextsStyle(context),
               ),
-
             ),
           ),
-          
         ],
       ),
     );
