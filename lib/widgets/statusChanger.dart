@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:yiqilma_app/widgets/myPopUpMeu.dart';
 
 class MyPopUpMenuButton extends StatelessWidget {
+  
+  TextEditingController thisController;
+  
   MyPopUpMenuButton({
+    required this.thisController,
+
+
     Key? key,
   }) : super(key: key);
 
@@ -19,6 +25,7 @@ class MyPopUpMenuButton extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: TextFormField(
+            controller: thisController,
             showCursor: false,
             style: TextStyle(color: Colors.white),
             decoration: InputDecoration(

@@ -16,4 +16,11 @@ class BottomNavCubit extends Cubit<BottomNavState> {
     isContracts = v;
     emit(BottomNavComplete());
   }
+
+  int theday = DateTime.now().day;
+
+  changetheDay(int v) {
+    theday = v;
+    emit(BottomNavComplete());
+  }
 }

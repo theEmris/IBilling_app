@@ -12,6 +12,7 @@ class contractService {
     required String location,
     required String inn,
     required String status,
+    required DateTime createTime
   }) async {
     final a_contract = NewContractModel()
       ..person = person
@@ -19,7 +20,7 @@ class contractService {
       ..location = location
       ..inn = inn
       ..status = status
-      ..createdata = DateTime.now();
+      ..createdata = createTime;
 
     final box = ContractBoxes.getContracts();
 

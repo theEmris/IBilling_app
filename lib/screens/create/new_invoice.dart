@@ -29,15 +29,18 @@ class NewInwoicePage extends StatelessWidget {
           myTextFormField(controller: _controller1),
           Text("Status of the invoice",
               style: TextStyle(color: UiContstants.kTextColor())),
-          MyPopUpMenuButton(),
+          MyPopUpMenuButton(thisController: _controller2),
           InkWell(
               child: saverButton(title: "Save Invoice"),
               onTap: () async {
                 await InvoiceService.addInvoice(
-                  nameofService: _controller0.text,
-                  summofinvoice: _controller1.text,
-                  status: _controller2.text
-                );
+                    nameofService: _controller0.text,
+                    summofinvoice: _controller1.text,
+                    status: _controller2.text);
+
+                _controller0.clear();
+                _controller1.clear();
+                _controller2.clear();
               }),
         ],
       ),

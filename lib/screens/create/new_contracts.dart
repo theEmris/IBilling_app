@@ -13,6 +13,7 @@ class new_Contracts_page extends StatelessWidget {
   TextEditingController _controller1 = TextEditingController();
   TextEditingController _controller2 = TextEditingController();
   TextEditingController _controller3 = TextEditingController();
+  TextEditingController _controller4 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,27 +54,32 @@ class new_Contracts_page extends StatelessWidget {
               child: Text("Status of the contract",
                   style: TextStyle(color: UiContstants.kTextColor())),
             ),
-            MyPopUpMenuButton(),
+            MyPopUpMenuButton(
+              thisController: _controller4,
+            ),
             InkWell(
               onTap: () async {
                 await contractService
                     .addContract(
-                  person: _controller0.text,
-                  fullName: _controller1.text,
-                  location: _controller2.text,
-                  inn: _controller3.text,
-                  status: "paid",
-                )
+                        person: _controller0.text,
+                        fullName: _controller1.text,
+                        location: _controller2.text,
+                        inn: _controller3.text,
+                        status: _controller4.text,
+                        createTime: DateTime.now())
                     .then((value) {
                   _controller0.clear();
                   _controller1.clear();
                   _controller2.clear();
                   _controller3.clear();
+                  _controller4.clear();
 
                   print("maybe saved");
                 });
               },
-              child: saverButton(title: 'Save contract',),
+              child: saverButton(
+                title: 'Save contract',
+              ),
             )
           ],
         ),
@@ -81,5 +87,3 @@ class new_Contracts_page extends StatelessWidget {
     );
   }
 }
-
-
